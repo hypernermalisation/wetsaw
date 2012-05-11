@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <style type="text/css">
+    
+      #navmap {
+          width: 700px;
+          height: 700px;
+          border: 1px solid black; 
+          background: #3c85d6;
+        }
+	  
+    </style>
+    
+    <script type="text/javascript">
+      // ******************
+      // Change this to point to the directory where you are generating tiles.
+      // ******************
+      var userUrl_nav = "file:///<file_root>/wetsaw/tiles/xyz/${z}/${y}/${x}.png";
+      var useSphericalMercatorTiles = true;
+    </script>
+
+
+    <script src="http://openlayers.org/api/OpenLayers.js">
+    </script>
+    <script type="text/javascript">
+	// can change to match data extent and prevent invalid requests.
+	var extent_nav = new OpenLayers.Bounds(-180, -90, 180, 90);
+
+	function init() {
+            var mapOptions_nav = {
+		controls: [ 
+		    new OpenLayers.Control.Navigation(),
+		    new OpenLayers.Control.PanZoom()
+		],
+		maxExtent: extent_nav
+            };
+	    
+	    function createMap_nav(domId) {
+		var map = new OpenLayers.Map(domId, mapOptions_nav);
+		
+	  var options = { transitionEffect: "resize" }
+   if(!useSphericalMercatorTiles) {
+  	options.sphericalMercator = false;
+		 options.maxResolution = 180.0 / 256.0;
+
+	}
+		var user = new OpenLayers.Layer.XYZ(
+		    "Your Map",
+		    userUrl_nav,
+			  options
+		);
+
+		map.addLayers([user]);
+
+		map.addControl(new OpenLayers.Control.MousePosition());
+
+		map.zoomTo(0);
+		
+		return map;
+	    } 
+	    
+	    window.map = createMap_nav('navmap');
+	}    
+    </script>
+  </head>
+  <body onload="init()">
+
+    <br>
+    <div id="navmap"></div>
+    
+    <a href="javascript: void window.map.zoomTo(0);"	accesskey="0">0</a>
+    <a href="javascript: void window.map.zoomTo(1);"	accesskey="1">1</a>
+    <a href="javascript: void window.map.zoomTo(2);"	accesskey="2">2</a>
+    <a href="javascript: void window.map.zoomTo(3);"	accesskey="3">3</a>
+    <a href="javascript: void window.map.zoomTo(4);"	accesskey="4">4</a>
+    <a href="javascript: void window.map.zoomTo(5);"	accesskey="5">5</a>
+    <a href="javascript: void window.map.zoomTo(6);"	accesskey="6">6</a>
+    <a href="javascript: void window.map.zoomTo(7);"	accesskey="7">7</a>
+    <a href="javascript: void window.map.zoomTo(8);"	accesskey="8">8</a>
+    <a href="javascript: void window.map.zoomTo(9);"	accesskey="9">9</a>
+    <a href="javascript: void window.map.zoomTo(10);"	accesskey="10">10</a>
+    <a href="javascript: void window.map.zoomTo(11);"	accesskey="11">11</a>
+    <a href="javascript: void window.map.zoomTo(12);"	accesskey="12">12</a>
+    <a href="javascript: void window.map.zoomTo(13);"	accesskey="13">13</a>
+    <a href="javascript: void window.map.zoomTo(14);"	accesskey="14">14</a>
+    <a href="javascript: void window.map.zoomTo(15);"	accesskey="15">15</a>
+    <a href="javascript: void window.map.zoomTo(16);"	accesskey="16">16</a>
+    <a href="javascript: void window.map.zoomTo(17);"	accesskey="17">17</a>
+    <a href="javascript: void window.map.zoomTo(18);"	accesskey="18">18</a>
+    <a href="javascript: void window.map.zoomTo(19);"	accesskey="19">19</a>
+    <a href="javascript: void window.map.zoomTo(20);"	accesskey="20">20</a>
+    <a href="javascript: void window.map.zoomTo(21);"	accesskey="21">21</a>
+    <a href="javascript: void window.map.zoomTo(22);"	accesskey="22">22</a>
+    <a href="javascript: void window.map.zoomTo(23);"	accesskey="23">23</a>
+    <a href="javascript: void window.map.zoomTo(24);"	accesskey="24">24</a>
+    <a href="javascript: void window.map.zoomTo(25);"	accesskey="25">25</a>
+    <a href="javascript: void window.map.zoomTo(26);"	accesskey="26">26</a>
+    <a href="javascript: void window.map.zoomTo(27);"	accesskey="27">27</a>
+    <a href="javascript: void window.map.zoomTo(28);"	accesskey="28">28</a>
+  </body>
+</html>

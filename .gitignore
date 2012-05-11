@@ -1,0 +1,21 @@
+#directory contents
+.svn
+/build
+/tiles/*
+/webserver/*
+/mapnik_styles/*
+
+#python specific
+*.pyc
+
+## wetsaw specific
+render.log
+tiles
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+notes.org
