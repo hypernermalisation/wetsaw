@@ -6,20 +6,21 @@ except:
 import os
 from itertools import islice, chain
 
-def world_poly_with_hole(bounds):
+def world_poly_with_hole(bounds, world_bounds):
     """
     Generate a polygon for geojson that is set up appropriately to
     cover the world with a hole at the given (w,n,e,s) bounds.
     """
     west, north, east, south = bounds
+    wwest, wnorth, weast, wsouth = world_bounds
     return { 'type' : 'Polygon',
              'coordinates' : [
-		[ [-180.0, -90.0], [-180.0, 90.0], [180.0, 90.0], [180.0, -90.0], [-180.0, -90.0] ],
+                [ [wwest, wsouth], [weast, wsouth], [weast, wnorth], [wwest, wnorth], [wwest, wsouth] ],
                 [ [west, south], [east, south], [east, north], [west, north], [west, south] ]
             ]
              }
 
-def geojson_highlight(bounds):
+def geojson_highlight(bounds, world_bounds):
     """
     Generate appropriate geojson to highlight the given area on a map.
     """
@@ -32,12 +33,12 @@ def geojson_highlight(bounds):
             ]
              }
 
-def write_geojson_highlight(filename, bounds):
+def write_geojson_highlight(filename, bounds, world_bounds):
     """
     Generate a geojson highlight at the given location.
     """
     fp = open(filename, 'w')
-    js = geojson_highlight(bounds)
+    js = geojson_highlight(bounds, world_bounds)
     json.dump(js, fp)
     fp.close()
 

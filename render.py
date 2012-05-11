@@ -147,7 +147,7 @@ if __name__ == '__main__':
 
     if opts.highlight is not None:
         bounds = (opts.west, opts.north, opts.east, opts.south)
-        write_geojson_highlight(opts.geojson_highlight, bounds)
+        write_geojson_highlight(opts.highlight, bounds, extent.tuple())
     
     # switch on kml/preview generation if we're buliding a tilepack
     if opts.generate_tilepack is not None:
