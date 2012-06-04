@@ -1,5 +1,13 @@
 
-from mapnik import load_map, Coord, Envelope, Image, Map, render
+import mapnik
+from mapnik import load_map, Coord, Image, Map, render
+
+envelope = None
+if mapnik.mapnik_version() < 1000:
+    envelope = mapnik.Envelope
+else:
+    envelope = mapnik.Box2d
+
 import os
 
 # Be sure to add a key point to your class to this hash after writing
@@ -92,8 +100,9 @@ registered['mapnik'] = MapnikRenderer
 
 def to_envelope(bounds):
     """
-    Translate a bounds object into an equivalent mapnik.Envelope.
+    Translate a bounds object into an equivalent mapnik envelope
+    (either mapnik.Envelope (0.7.2) or mapnik.Box2d (2+).
     """
-    return Envelope(Coord(bounds.west, bounds.north), Coord(bounds.east, bounds.south))
+    return envelope(Coord(bounds.west, bounds.north), Coord(bounds.east, bounds.south))
 
 
