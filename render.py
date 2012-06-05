@@ -2,6 +2,8 @@
 
 import tilesettings, tilerenderer, tools, bound
 
+from os import path
+
 from processors import Renderer
 
 from optparse import OptionParser, OptionGroup
@@ -54,8 +56,8 @@ watermark_group = OptionGroup(parser, "Watermarking")
 # watermarking options
 watermark_group.add_option("--watermark", dest="watermark", default=False, action="store_true",
                            help="Enable watermarking")
-watermark_group.add_option("--watermark_file", dest="watermark_file", default="./watermark.png", type="string",
-                           help="The file to use for watermarking. Default is ./watermark.png")
+watermark_group.add_option("--watermark_file", dest="watermark_file", default="WETSAW_DEFAULT_WATERMARK", type="string",
+                           help="The file to use for watermarking. Default is ./watermark.png in the wetsaw package")
 
 parser.add_option_group(watermark_group)
 
@@ -155,8 +157,11 @@ if __name__ == '__main__':
         opts.do_kml      = True
 
     # turn on watermarking for the user if they supplied a custom file
-    if opts.watermark_file != "./watermark.png":
+    if opts.watermark_file != "WETSAW_DEFAULT_WATERMARK":
         opts.watermark = True
+    else:
+        wetsaw_root = path.dirname(path.realpath(bound.__file__[:-1]))
+        opts.watermark_file = path.join(wetsaw_root, 'watermark.png')
 
     # should we push to s3?
     opts.s3_upload = opts.s3_prefix is not None and opts.s3_bucket is not None
