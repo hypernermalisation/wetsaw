@@ -65,14 +65,6 @@ class XYZTileSettings:
                       east  = self.lon_to_xyz(domain.east, denom),
                       west  = self.lon_to_xyz(domain.west, denom))
 
-        # If we're dealing with a really tiny area starting from a
-        # small zoom we can end up with "no" tiles to generate based
-        # on the bounds, so fudge the numbers when this happens.
-        if tiles.north == tiles.south:
-            tiles.south = tiles.south + 1
-        if tiles.east == tiles.west:
-            tiles.east = tiles.east + 1
-
         return tiles
                 
     def estimate_tiles(self, domain, scale):
