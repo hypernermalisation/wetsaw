@@ -145,7 +145,7 @@ class Bound:
 
 	def tiles_for(self, width):
 		"Return a list of (west,north,east,south) for tiles of width 'width' across this bound, assumes pixels and y points up."
-		return ((w,n,w+width,n+width) for w in xrange(self.west, self.east, width) for n in xrange(self.north, self.south, width))
+		return ((w,n,w+width,n+width) for w in xrange(self.west, self.east+width, width) for n in xrange(self.north, self.south+width, width))
 
 	def sub(self, other):
 		"Return new bounds in terms of the vector at (other.top, other.left)"
