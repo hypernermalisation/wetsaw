@@ -138,6 +138,8 @@ class XYZTileSettings:
         tile_name - the file name to store this tile in
         """
         tiles = self.calc_bounds(domain, scale)
+        tiles.east = tiles.east + 1
+        tiles.south = tiles.south + 1
 
         meta_width = self.appropriate_meta_width(tiles)
 
