@@ -1,6 +1,10 @@
+try:
+  import mapnik
+  from mapnik import load_map, Coord, Image, Map, render
+except:
+  import mapnik2 as mapnik
+  from mapnik2 import load_map, Coord, Image, Map, render
 
-import mapnik
-from mapnik import load_map, Coord, Image, Map, render
 
 envelope = None
 if mapnik.mapnik_version() < 1000:
