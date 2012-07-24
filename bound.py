@@ -90,7 +90,7 @@ class Bound:
 			b = self.copy()
 			b.west -= extent.lon_span()
 			assert(b.west < b.east and b.west < extent.west)
-			return b.slice_at_dateline()
+			return b.slice_at_dateline(spherical_mercator)
 
 		return (left, right)
 
