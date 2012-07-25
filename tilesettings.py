@@ -161,8 +161,7 @@ class XYZTileSettings:
                            west  = west_max  + float(bw * scale_denom))
 
             scale_filename = scale
-            if self.spherical_mercator:
-                scale_filename = scale - 1
+
             yield (extent, meta_width * 256, meta_loc, self.inner_tiles(boundaries, scale_filename))
         
     def inner_tiles(self, meta_bounds, scale):
