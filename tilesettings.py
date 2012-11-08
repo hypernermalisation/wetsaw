@@ -95,10 +95,7 @@ class XYZTileSettings:
         """
         Computer the number of degrees/meters per-tile at the given scale.
         """
-        if self.spherical_mercator:
-            return self.max_bounds.lat_span() / (2.0 ** (scale - 1))
-        else:
-            return self.max_bounds.lat_span() / (2.0 ** scale)
+        return self.max_bounds.lat_span() / (2.0 ** scale)
 
     def appropriate_meta_width(self, extent):
         """
