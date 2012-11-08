@@ -19,6 +19,6 @@ Requirements
 ============
 
 * Python (tested on 2.6.1+, not yet tested on 3.0)
-* Mapnik 0.7.1 (Mapnik 2 support is on the way)
+* Mapnik (0.7.1 or 2.X)
 * PIL (test on 1.1.7)
 * boto (for s3 file upload)
